@@ -1,0 +1,7 @@
+tf_keras
+tensorflow
+tensorflow_hub
+numpy
+pandas
+pillow
+opencv-python
