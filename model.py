@@ -36,15 +36,16 @@ def main():
 
 # Preprocess the image
 def preprocess_image(image):
+    # Resize the image to match the input size of the model
+    image = image.resize((224,224))
     # Convert the image to a numpy array and standardize the pixel values
     image_array = np.array(image)/255.0
-    # Resize the image to match the input size of the model
-    resized_image = image_array.resize(224,224)
+    
     # Expand the dimensions to match the input shape of the model
-    expanded_image = resized_image[np.newaxis, ...]
+    expanded_image = image_array[np.newaxis, ...]
     # Preprocess the image (e.g., normalize pixel values)
     #preprocessed_image = tf_keras.applications.mobilenet_v2.preprocess_input(expanded_image)
-    return preprocessed_image
+    return expanded_image
 
 # Get the predicted class
 def get_predicted_class(predictions):
