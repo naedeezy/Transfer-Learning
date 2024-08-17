@@ -37,7 +37,7 @@ def main():
 # Preprocess the image
 def preprocess_image(image):
     # Convert the image to a numpy array
-    image_array = tf_keras.preprocessing.image.img_to_array(image)
+    image_array = np.array(image)
     #Standardise the pixel values
     image_array = image_array / 255.0
     # Resize the image to match the input size of the model
