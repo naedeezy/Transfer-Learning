@@ -5,7 +5,6 @@ import numpy as np
 import pandas as pd
 from PIL import Image
 import tensorflow_hub as hub
-import cv2
 
 # Load the pre-trained model
 model = tf_keras.models.load_model('flower_model.h5', custom_objects={'KerasLayer':hub.KerasLayer})
@@ -42,7 +41,7 @@ def preprocess_image(image):
     #Standardise the pixel values
     image_array = image_array / 255.0
     # Resize the image to match the input size of the model
-    resized_image = cv2.resize(np.array(image_array),(224,224))
+    resized_image = image_array.resize(224,224)
     # Expand the dimensions to match the input shape of the model
     expanded_image = tf.expand_dims(resized_image, axis=0)
     # Preprocess the image (e.g., normalize pixel values)
